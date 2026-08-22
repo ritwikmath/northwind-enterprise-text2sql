@@ -5,7 +5,7 @@ from pydantic import BaseModel, Field
 
 
 class FieldSelection(BaseModel):
-    """An attribute of the data that the user mentioned wanting to see or measure."""
+    """A data attribute or entity that the user explicitly requests as part of the result."""
 
     name: str = Field(description="The attribute as the user referred to it, e.g. 'revenue' or 'customer name'.")
     type: Literal["dimension", "metric"] = Field(
@@ -20,9 +20,23 @@ class FieldSelection(BaseModel):
 class Filter(BaseModel):
     """A restriction the user placed on which results they care about."""
 
+    entity: str = Field(description="The entity the field closely relate to, eg country is entoty name can be field")
     field: str = Field(description="The attribute the restriction applies to, e.g. 'country' or 'signup date'.")
-    operator: str = Field(
-        description="The kind of comparison the user expressed, e.g. 'more than', 'at least', 'equals', 'is not', 'one of', 'contains', 'starts with'."
+    operator: Literal[
+            "equals",
+            "not_equals",
+            "greater_than",
+            "greater_than_or_equal",
+            "less_than",
+            "less_than_or_equal",
+            "in",
+            "not_in",
+            "contains",
+            "starts_with",
+            "ends_with",
+            "between"
+        ] = Field(
+        description="The comparison operation expressed by the user."
     )
     value: str = Field(description="What the attribute is being compared against, exactly as the user expressed it.")
 
@@ -51,9 +65,71 @@ class QueryParams(BaseModel):
 class TimeRange(BaseModel):
     """The time period the user's question is scoped to."""
 
-    field: str = Field(description="The point in time the period refers to, as the user framed it, e.g. 'order date'.")
-    start_date: datetime | None = Field(default=None, description="Beginning of the period the user described.")
-    end_date: datetime | None = Field(default=None, description="End of the period the user described.")
+    field: str = Field(
+        description=(
+            "The business time field the period applies to, "
+            "for example 'order date', 'purchase date', or 'signup date'."
+        )
+    )
+
+    type: Literal[
+        "absolute",
+        "relative",
+        "upcoming",
+        "between",
+    ] = Field(
+        description=(
+            "The type of temporal expression used by the user. "
+            "'absolute' for explicit dates, 'relative' for periods such as "
+            "'last month' or 'previous year', 'upcoming' for future periods "
+            "such as 'next 30 days', and 'between' for a range between two "
+            "temporal expressions."
+        )
+    )
+
+    start_date: datetime | None = Field(
+        default=None,
+        description=(
+            "Explicit beginning date when the user provides an absolute date. "
+            "Do not calculate this for relative expressions."
+        )
+    )
+
+    end_date: datetime | None = Field(
+        default=None,
+        description=(
+            "Explicit ending date when the user provides an absolute date. "
+            "Do not calculate this for relative expressions."
+        )
+    )
+
+    expression: str | None = Field(
+        default=None,
+        description=(
+            "The temporal expression exactly as expressed by the user, "
+            "for example 'last month', 'previous year', or "
+            "'the month that just ended'."
+        )
+    )
+
+    value: int | None = Field(
+        default=None,
+        description=(
+            "Numeric duration when the user specifies one, "
+            "for example 30 in 'next 30 days'."
+        )
+    )
+
+    unit: Literal[
+        "day",
+        "week",
+        "month",
+        "quarter",
+        "year",
+    ] | None = Field(
+        default=None,
+        description="The unit associated with a duration."
+    )
 
 
 class QueryIR(BaseModel):
