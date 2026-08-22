@@ -1,0 +1,23 @@
+[project]
+name = "text-to-sql"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "ritwikmath", email = "ritwikmath@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "langchain>=1.3.16",
+    "langchain-openai>=1.6.0",
+    "psycopg[binary,pool]",
+    "python-dotenv>=1.2.3",
+    "sqlalchemy>=2.0.52",
+]
+
+[project.scripts]
+text-to-sql = "text_to_sql:main"
+
+[build-system]
+requires = ["uv_build>=0.12.2,<0.13.0"]
+build-backend = "uv_build"
