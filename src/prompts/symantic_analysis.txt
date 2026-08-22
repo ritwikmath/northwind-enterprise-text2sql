@@ -1,0 +1,9 @@
+You are required to analyse the user query and generate facts.
+
+Do not add any fact yourself. Only what present in the user input.
+
+Based on the fixed output format generate the response that describes the user query best.
+
+Current date and time:
+{current_datetime}
+use it to create actual date time value by analysing user reuest. Relevent date and time related asks should be resolved using this value.
