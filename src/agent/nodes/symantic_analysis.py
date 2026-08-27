@@ -3,11 +3,12 @@ from langchain_openai import ChatOpenAI
 
 from agent.graph_state import CustomAgentState
 from llm.structured_output.symantic_analysis import QueryIR
+from paths import PROMPTS_DIR
 
 
 def symantic_analysis_agent(state: CustomAgentState):
     system_prompt = ""
-    with open("prompts/symantic_analysis.txt", "r") as file:
+    with open(PROMPTS_DIR / "symantic_analysis.txt", "r") as file:
         system_prompt = file.read()
 
     model = ChatOpenAI(
