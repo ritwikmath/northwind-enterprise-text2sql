@@ -1,5 +1,8 @@
+import json
+
 from dotenv import load_dotenv
 from langchain.messages import HumanMessage
+from langfuse.langchain import CallbackHandler
 
 from paths import ENV_FILE
 
@@ -13,6 +16,8 @@ messages = [
     HumanMessage(user_message)
 ]
 
-result = agent.invoke({"messages": messages})
+langfuse_handler = CallbackHandler()
 
-print(result["symantic_analysis"].model_dump())
+result = agent.invoke({"messages": messages}, config={"callbacks": [langfuse_handler]})
+
+print(json.dumps(result, indent=4, default=str))

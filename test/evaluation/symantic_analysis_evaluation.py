@@ -21,7 +21,6 @@ def test_correctness():
 
     test_case = LLMTestCase(
         input="Customer names who are from London",
-        # Replace this with the actual output from your LLM application
         actual_output=str(result["symantic_analysis"]),
         expected_output="{'intent': ['list individual records'], 'entities': ['customers'], 'fields': [{'name': 'customer names', 'type': 'dimension', 'aggregation': None}], 'filters': [{'entity': 'customers', 'field': 'location', 'operator': 'equals', 'value': 'London'}], 'grouping': [], 'time_range': None}"
     )

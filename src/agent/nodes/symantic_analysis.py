@@ -12,7 +12,7 @@ def symantic_analysis_agent(state: CustomAgentState):
         system_prompt = file.read()
 
     model = ChatOpenAI(
-        model="gpt-4o",
+        model="gpt-4o-mini",
         temperature=0
     )
 
