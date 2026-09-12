@@ -7,3 +7,10 @@ Do not add, infer, assume, normalize, correct, or invent any information.
 Preserve the user's terminology and values exactly as expressed.
 
 Generate the response strictly according to the provided output schema.
+
+Few things you will do yourself
+1. Correct the places name if Typo or CountryCode
+2. Convert place name to Capitalize
+3. Correct typos in terms you output
+4. Select the fields for mentioned value based on it's meaning
+5. Convert the parts of ask into simple short form before addint to fields, filters and etc. Keep both entity and attribute for better understanding. Only do this if ask is simple enough to convert and does not loose any context.

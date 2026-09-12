@@ -18,6 +18,6 @@ messages = [
 
 langfuse_handler = CallbackHandler()
 
-result = agent.invoke({"messages": messages}, config={"callbacks": [langfuse_handler]})
+result = agent.invoke(input={"messages": messages}, config={"callbacks": [langfuse_handler]})
 
 print(json.dumps(result, indent=4, default=str))

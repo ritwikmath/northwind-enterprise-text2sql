@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 class FieldSelection(BaseModel):
     """A data attribute or entity that the user explicitly requests as part of the result."""
 
-    name: str = Field(description="The attribute as the user referred to it, e.g. 'revenue' or 'customer name'.")
+    name: str = Field(description="The attribute as the user referred to it along with the associated entity (if any), e.g. 'revenue' or 'customer name'.")
     type: Literal["dimension", "metric"] = Field(
         description="'metric' if the user is asking for something measurable or countable (revenue, number of orders); 'dimension' if it describes or categorises the results (region, product, month)."
     )

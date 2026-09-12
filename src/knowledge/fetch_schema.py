@@ -30,14 +30,12 @@ def fetch_columns_tables_from_vectord_db(fields: list[str]) -> int:
     for d, s in zip(vector_embeddings, sparse_embeddings):
         response = index.query(
             namespace="tableschema",
-            top_k=2,
-            vector=[value * 0.7 for value in d],
-            sparse_vector={'indices': s['sparse_indices'], 'values': [value * 0.3 for value in s['sparse_values']]},
+            top_k=3,
+            vector=d,
+            sparse_vector={'indices': s['sparse_indices'], 'values': s['sparse_values']},
             include_values=False,
             include_metadata=True
         )
         for match in response["matches"]:
-            print(f"{match['id']}:{match['score']}")
-            # if match['score'] >= 4.0:
             matches[match["id"]] = match["metadata"]
     return list(matches.values())
