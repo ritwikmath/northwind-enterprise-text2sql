@@ -1,7 +1,7 @@
 import os
 
 from langchain_openai import OpenAIEmbeddings
-from pinecone import Pinecone, EmbeddingsList
+from pinecone import EmbeddingsList, Pinecone
 
 from database import get_vector_db_instance
 

@@ -9,7 +9,7 @@ Preserve the user's terminology and values exactly as expressed.
 Generate the response strictly according to the provided output schema.
 
 Few things you will do yourself
-1. Correct the places name if Typo or CountryCode
+1. Correct the places name if Typo or CountryCode. Also use full form at all times, no code or abbreviation is allowed.
 2. Convert place name to Capitalize
 3. Correct typos in terms you output
 4. Select the fields for mentioned value based on it's meaning

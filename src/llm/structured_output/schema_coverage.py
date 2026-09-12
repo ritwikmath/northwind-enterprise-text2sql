@@ -1,8 +1,7 @@
-from typing import Literal
+from datetime import datetime
+from typing import Iterator, Literal
 
 from pydantic import BaseModel, Field
-
-from llm.structured_output.symantic_analysis import FieldSelection, Filter, TimeRange
 
 
 class ColumnRef(BaseModel):
@@ -15,80 +14,149 @@ class ColumnRef(BaseModel):
         return f"{self.table}.{self.column}"
 
 
-class Resolution(BaseModel):
-    """One term from the user's query bound to an attribute in the fetched schema."""
-
-    user_term: str = Field(
-        description="The term exactly as it appears in the query IR, e.g. 'revenue' or 'customer name'."
-    )
-    column: ColumnRef | None = Field(
-        default=None,
-        description="The attribute this term refers to. Null when nothing in the fetched schema means this term.",
-    )
-    confidence: Literal["exact", "likely", "guess"] = Field(
-        description=(
-            "'exact' when the name or description states the same thing as the user's term; "
-            "'likely' when the description makes the meaning clear under a different name; "
-            "'guess' when the match is plausible but the schema does not confirm it."
-        )
-    )
-    reason: str | None = Field(
-        default=None,
-        description="Why this attribute was chosen, or what is missing when no attribute matches.",
-    )
-
-
-class SchemaResolution(BaseModel):
-    """The mapping the model produces: every term in the query IR, bound or reported unbound."""
-
-    resolutions: list[Resolution] = Field(
-        default_factory=list,
-        description="One entry per term in the query IR. Include terms you could not resolve, with a null column.",
-    )
-
-    @property
-    def covered(self) -> bool:
-        return bool(self.resolutions) and all(r.column is not None for r in self.resolutions)
-
-    def by_term(self) -> dict[str, Resolution]:
-        return {r.user_term: r for r in self.resolutions}
-
-
 class BoundField(BaseModel):
-    """A requested attribute, bound to a column. `spec` carries the user's intent unchanged."""
+    """A column to select, and how it should be summarised."""
 
     column: ColumnRef
-    spec: FieldSelection
+    aggregation: Literal["sum", "avg", "count", "min", "max"] | None = Field(
+        default=None,
+        description=(
+            "How this column is summarised, carried across from the request: 'total' -> sum, "
+            "'average' -> avg, 'how many' -> count, 'lowest' -> min, 'highest' -> max. "
+            "Null when the column is selected as is."
+        ),
+    )
+    user_term: str = Field(
+        default="",
+        description="The attribute in the user's own words, e.g. 'revenue'. For readability only.",
+    )
 
 
 class BoundFilter(BaseModel):
-    """A restriction, bound to a column. `spec` carries the operator and value unchanged."""
+    """A restriction on which rows to keep, applied to one column."""
 
     column: ColumnRef
-    spec: Filter
+    operator: Literal[
+        "equals",
+        "not_equals",
+        "greater_than",
+        "greater_than_or_equal",
+        "less_than",
+        "less_than_or_equal",
+        "in",
+        "not_in",
+        "contains",
+        "starts_with",
+        "ends_with",
+        "between",
+    ] = Field(description="The comparison, carried across from the request unchanged.")
+    value: str = Field(
+        description="What the column is compared against, carried across from the request unchanged."
+    )
+    user_term: str = Field(
+        default="",
+        description="The restricted attribute in the user's own words, e.g. 'country'. For readability only.",
+    )
+
+
+class BoundGrouping(BaseModel):
+    """A column the results are broken down by."""
+
+    column: ColumnRef
+    user_term: str = Field(
+        default="",
+        description="The breakdown attribute in the user's own words, e.g. 'region'. For readability only.",
+    )
 
 
 class BoundTimeRange(BaseModel):
-    """The time scope, bound to a date column. `spec` stays symbolic; resolve it to bounds downstream."""
+    """The time scope, applied to a date column.
+
+    The period stays symbolic — copy the user's expression across rather than working
+    out dates for it; it is resolved to bounds downstream.
+    """
 
     column: ColumnRef
-    spec: TimeRange
+    type: Literal["absolute", "relative", "upcoming", "between"] = Field(
+        description=(
+            "'absolute' for explicit dates, 'relative' for periods such as 'last month', "
+            "'upcoming' for future periods such as 'next 30 days', 'between' for a range."
+        )
+    )
+    start_date: datetime | None = Field(
+        default=None,
+        description="Beginning date, only when the request states an absolute one. Never calculate it.",
+    )
+    end_date: datetime | None = Field(
+        default=None,
+        description="Ending date, only when the request states an absolute one. Never calculate it.",
+    )
+    expression: str | None = Field(
+        default=None,
+        description="The period as the user expressed it, e.g. 'last month', copied across unchanged.",
+    )
+    value: int | None = Field(
+        default=None, description="Numeric duration when one is given, e.g. 30 in 'next 30 days'."
+    )
+    unit: Literal["day", "week", "month", "quarter", "year"] | None = Field(
+        default=None, description="The unit associated with a duration."
+    )
+    user_term: str = Field(
+        default="",
+        description="The time attribute in the user's own words, e.g. 'order date'. For readability only.",
+    )
 
 
 class SQLQueryIR(BaseModel):
-    """The query IR with user terms replaced by schema attributes, assembled from a SchemaResolution."""
+    """The query to build, stated in columns instead of the user's words.
 
-    tables: list[str] = Field(
-        default_factory=list, description="Every table referenced by the bound columns, deduplicated."
+    This is what the schema-coverage model returns. It is derived from the semantic
+    analysis, but it does not have to mirror it term for term: the model may drop a
+    term the schema cannot express, and may add a column the query needs. The only
+    thing checked afterwards is that every column named here really exists in the
+    fetched schema — see `llm.binding.resolve_against_schema`.
+
+    Nothing here restates a user term as a required value. Once a column is chosen,
+    the wording that led to it carries no further meaning, and a field the model has
+    no reason to write is a field it cannot omit and fail on.
+    """
+
+    fields: list[BoundField] = Field(
+        default_factory=list, description="The columns to select, with their aggregation if any."
     )
-    fields: list[BoundField] = Field(default_factory=list)
-    filters: list[BoundFilter] = Field(default_factory=list)
-    grouping: list[ColumnRef] = Field(default_factory=list)
-    time_range: BoundTimeRange | None = None
-    unresolved: list[Resolution] = Field(
-        default_factory=list, description="Terms with no matching attribute in the fetched schema."
+    filters: list[BoundFilter] = Field(
+        default_factory=list, description="The restrictions to apply, each on one column."
     )
+    grouping: list[BoundGrouping] = Field(
+        default_factory=list, description="The columns the results are broken down by."
+    )
+    time_range: BoundTimeRange | None = Field(
+        default=None, description="The date column the question is scoped to, and the period."
+    )
+    unresolved: list[str] = Field(
+        default_factory=list,
+        description=(
+            "Anything the request asks for that no retrieved column can express, one entry each, "
+            "written as a plain description of the information that is missing — 'the segment a "
+            "customer belongs to', 'whether an order was refunded'. This is searched against other "
+            "sources later, so write words someone could look the meaning up by. Never write a "
+            "table or column name here, and never invent one to name the gap: if a column for it "
+            "existed you would have used it, so there is nothing here to name."
+        ),
+    )
+
+    def columns(self) -> Iterator[ColumnRef]:
+        """Every column this query references, in the order it appears."""
+        for field in self.fields:
+            yield field.column
+        for filter_ in self.filters:
+            yield filter_.column
+        for group in self.grouping:
+            yield group.column
+        if self.time_range is not None:
+            yield self.time_range.column
 
     @property
-    def covered(self) -> bool:
-        return not self.unresolved
+    def tables(self) -> list[str]:
+        """Every table referenced by the bound columns, deduplicated, in first-seen order."""
+        return list(dict.fromkeys(column.table for column in self.columns()))
