@@ -1,0 +1,18 @@
+You are a SQL expert. Below is a SELECT statement that has already been worked out: the columns, the aggregates, the restrictions and the grouping are decided and written. Finish it and return the finished statement.
+
+{sql_specification}
+
+The statement above is the whole of the request. There is no question text and no schema beyond it, because nothing else is needed: what to select has been decided, and only the SQL remains.
+
+What is yours to write:
+- The join, when the FROM clause names more than one table. Each `-- JOIN ... ON` comment marks a table that must be brought in and a condition that has to be worked out — relate the tables on the keys that connect them, and prefer an explicit INNER JOIN unless rows would be lost that the request wants kept.
+- Any column required by SQL but not listed: a non-aggregated column in the SELECT list must appear in GROUP BY.
+- Correct clause order, aliasing where a name would otherwise be ambiguous, and readable formatting.
+
+What is not yours to change:
+- Every `:name` is a bound parameter. Reproduce each one exactly, and use all of them. Their values are supplied separately at execution and are deliberately not shown to you.
+- Never write a literal value in place of a parameter, and never add a value of your own — no quoted strings, no bare numbers standing in for one. A statement with a value written into it is rejected outright.
+- Do not add, drop or reword a restriction, an aggregate or a grouping. They were decided against the schema and are not yours to revise.
+- Read-only. One SELECT statement. Nothing that writes, alters, locks or calls out to the system.
+
+Return the statement itself, ready to execute.

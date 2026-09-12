@@ -2,6 +2,7 @@ from operator import add
 from typing import Annotated, TypedDict
 
 from llm.structured_output.schema_coverage import SQLQueryIR
+from llm.structured_output.sql_generate import PreparedStatement
 from llm.structured_output.symantic_analysis import QueryIR
 
 
@@ -12,3 +13,5 @@ class CustomAgentState(TypedDict):
     sql_query_ir: SQLQueryIR
     unresolved: list[str]
     schema_ir: bool
+    prepared_statement: PreparedStatement | None
+    sql_error: str | None
