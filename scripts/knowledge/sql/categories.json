@@ -1,0 +1,46 @@
+{
+  "documents": [
+    {
+      "id": "table:categories",
+      "type": "table",
+      "name": "categories",
+      "default_columns": [
+        "category_name",
+        "description"
+      ],
+      "text": "Categories. Product categories. Category list. Product types. Product groups. Product classification. Kinds of products. Product lines. Departments. Groupings that products belong to, such as beverages, condiments, confections, dairy products, grains and cereals, meat and poultry, produce and seafood. Contains category identifier, category name, a description of what the category covers and a picture."
+    },
+    {
+      "id": "column:categories.category_id",
+      "type": "column",
+      "table": "categories",
+      "column": "category_id",
+      "data_type": "smallint",
+      "text": "Category ID. Category identifier. Category code. Category number. Product category ID. The number that uniquely identifies a product category. Used to link a product to the category it belongs to."
+    },
+    {
+      "id": "column:categories.category_name",
+      "type": "column",
+      "table": "categories",
+      "column": "category_name",
+      "data_type": "character varying(15)",
+      "text": "Category name. Name of the category. Product category. Product type. Product group. Category called a certain name. Which category a product belongs to, such as beverages, seafood or dairy products. The readable label of the product category, as distinct from the category description."
+    },
+    {
+      "id": "column:categories.description",
+      "type": "column",
+      "table": "categories",
+      "column": "description",
+      "data_type": "text",
+      "text": "Category description. Description of the category. What the category covers. Category details. Explanation of the product category. Free text describing the kinds of products in the category, as distinct from the short category name."
+    },
+    {
+      "id": "column:categories.picture",
+      "type": "column",
+      "table": "categories",
+      "column": "picture",
+      "data_type": "bytea",
+      "text": "Category picture. Category image. Category photo. Picture of the category. Binary image data held for the product category."
+    }
+  ]
+}

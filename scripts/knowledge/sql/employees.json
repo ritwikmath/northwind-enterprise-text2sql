@@ -1,0 +1,159 @@
+{
+  "documents": [
+    {
+      "id": "table:employees",
+      "type": "table",
+      "name": "employees",
+      "default_columns": [
+        "first_name",
+        "last_name",
+        "title"
+      ],
+      "text": "Employees. Employee information. Employee records. Staff. Staff list. Personnel. Workers. Sales representatives. Sales people. Salespeople who take orders. Team members. Who works for the company. Contains employee identifier, first and last name, job title and title of courtesy, date of birth, hire date, street address, city, region, postal code, country, home phone number and extension, photo, notes, the manager the employee reports to and the path to their photo."
+    },
+    {
+      "id": "column:employees.employee_id",
+      "type": "column",
+      "table": "employees",
+      "column": "employee_id",
+      "data_type": "smallint",
+      "text": "Employee ID. Employee identifier. Employee code. Employee number. Staff ID. Sales representative ID. The number that uniquely identifies an employee. Used to look up a specific employee or link an order to the employee who handled it."
+    },
+    {
+      "id": "column:employees.last_name",
+      "type": "column",
+      "table": "employees",
+      "column": "last_name",
+      "data_type": "character varying(20)",
+      "text": "Last name. Surname. Family name. Employee last name. Staff surname. The family name of the employee, as distinct from their first name."
+    },
+    {
+      "id": "column:employees.first_name",
+      "type": "column",
+      "table": "employees",
+      "column": "first_name",
+      "data_type": "character varying(10)",
+      "text": "First name. Given name. Forename. Employee first name. Staff first name. The personal name of the employee, as distinct from their last name."
+    },
+    {
+      "id": "column:employees.title",
+      "type": "column",
+      "table": "employees",
+      "column": "title",
+      "data_type": "character varying(30)",
+      "text": "Employee title. Job title. Position. Role. Designation. Job role of the employee, such as sales representative, sales manager or vice president. What an employee does. Employees holding a particular position."
+    },
+    {
+      "id": "column:employees.title_of_courtesy",
+      "type": "column",
+      "table": "employees",
+      "column": "title_of_courtesy",
+      "data_type": "character varying(25)",
+      "text": "Title of courtesy. Courtesy title. Salutation. Honorific. Form of address such as Mr, Mrs, Ms or Dr used before the employee's name, as distinct from their job title."
+    },
+    {
+      "id": "column:employees.birth_date",
+      "type": "column",
+      "table": "employees",
+      "column": "birth_date",
+      "data_type": "date",
+      "text": "Birth date. Date of birth. Birthday. Employee birth date. When an employee was born. Used to work out an employee's age or to find employees born in a period."
+    },
+    {
+      "id": "column:employees.hire_date",
+      "type": "column",
+      "table": "employees",
+      "column": "hire_date",
+      "data_type": "date",
+      "text": "Hire date. Date hired. Joining date. Start date. Date of joining. When an employee joined the company. Employees hired in a period. Used to work out length of service or tenure."
+    },
+    {
+      "id": "column:employees.address",
+      "type": "column",
+      "table": "employees",
+      "column": "address",
+      "data_type": "character varying(60)",
+      "text": "Employee address. Street address. Home address. Mailing address. Where the employee lives. Street and building details of the employee, as distinct from city, region or country."
+    },
+    {
+      "id": "column:employees.city",
+      "type": "column",
+      "table": "employees",
+      "column": "city",
+      "data_type": "character varying(15)",
+      "text": "Employee city. City. Town. City where the employee lives or is based. Employees from a city. Which city an employee is in."
+    },
+    {
+      "id": "column:employees.region",
+      "type": "column",
+      "table": "employees",
+      "column": "region",
+      "data_type": "character varying(15)",
+      "text": "Employee region. Region. State. Province. County. Territory area. Regional location of the employee, broader than city but within a country. Employees in a particular state or province."
+    },
+    {
+      "id": "column:employees.postal_code",
+      "type": "column",
+      "table": "employees",
+      "column": "postal_code",
+      "data_type": "character varying(10)",
+      "text": "Employee postal code. Zip code. Postcode. PIN code. Postal code of the employee address. Employees in a particular zip or postal code area."
+    },
+    {
+      "id": "column:employees.country",
+      "type": "column",
+      "table": "employees",
+      "column": "country",
+      "data_type": "character varying(15)",
+      "text": "Employee country. Country. Nation. Country where the employee is based. Employees from a country. Broadest geographic level for an employee, above region and city."
+    },
+    {
+      "id": "column:employees.home_phone",
+      "type": "column",
+      "table": "employees",
+      "column": "home_phone",
+      "data_type": "character varying(24)",
+      "text": "Home phone. Home phone number. Employee phone. Telephone number. Contact number. Personal phone details of the employee, as distinct from the office extension."
+    },
+    {
+      "id": "column:employees.extension",
+      "type": "column",
+      "table": "employees",
+      "column": "extension",
+      "data_type": "character varying(4)",
+      "text": "Extension. Phone extension. Office extension. Internal extension number. The internal desk number of the employee, as distinct from their home phone number."
+    },
+    {
+      "id": "column:employees.photo",
+      "type": "column",
+      "table": "employees",
+      "column": "photo",
+      "data_type": "bytea",
+      "text": "Employee photo. Picture. Image. Photograph of the employee. Binary image data held for the employee."
+    },
+    {
+      "id": "column:employees.notes",
+      "type": "column",
+      "table": "employees",
+      "column": "notes",
+      "data_type": "text",
+      "text": "Employee notes. Notes. Remarks. Comments. Background. Biography. Free text about the employee, such as their education, qualifications, languages and career history."
+    },
+    {
+      "id": "column:employees.reports_to",
+      "type": "column",
+      "table": "employees",
+      "column": "reports_to",
+      "data_type": "smallint",
+      "text": "Reports to. Manager. Supervisor. Line manager. Boss. Who an employee reports to. Reporting line. The employee identifier of the person this employee reports to, used to build the management hierarchy."
+    },
+    {
+      "id": "column:employees.photo_path",
+      "type": "column",
+      "table": "employees",
+      "column": "photo_path",
+      "data_type": "character varying(255)",
+      "text": "Photo path. Picture path. Image URL. Link to the employee photo. The location where the employee's photograph is stored."
+    }
+  ]
+}

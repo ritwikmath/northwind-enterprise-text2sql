@@ -1,0 +1,127 @@
+{
+  "documents": [
+    {
+      "id": "table:orders",
+      "type": "table",
+      "name": "orders",
+      "default_columns": [
+        "order_id",
+        "order_date",
+        "customer_id"
+      ],
+      "text": "Orders. Order information. Order records. Sales orders. Purchases. Purchase orders. Bookings. Transactions. Sales. Orders placed by customers. Order headers, one row per order. Contains order identifier, the customer who placed it, the employee who handled it, the order date, required date and shipped date, the shipper used, the freight charge and the full shipping name and address."
+    },
+    {
+      "id": "column:orders.order_id",
+      "type": "column",
+      "table": "orders",
+      "column": "order_id",
+      "data_type": "smallint",
+      "text": "Order ID. Order identifier. Order number. Order code. Sales order number. Invoice number. The number that uniquely identifies an order. Used to look up a specific order or count how many orders there are."
+    },
+    {
+      "id": "column:orders.customer_id",
+      "type": "column",
+      "table": "orders",
+      "column": "customer_id",
+      "data_type": "character varying(5)",
+      "text": "Customer ID on the order. Which customer placed the order. Customer code on the order. Buyer. Ordering customer. Used to link an order back to the customer who placed it."
+    },
+    {
+      "id": "column:orders.employee_id",
+      "type": "column",
+      "table": "orders",
+      "column": "employee_id",
+      "data_type": "smallint",
+      "text": "Employee ID on the order. Which employee handled the order. Sales representative on the order. Salesperson. Who took or processed the order. Used to link an order back to the employee responsible for it."
+    },
+    {
+      "id": "column:orders.order_date",
+      "type": "column",
+      "table": "orders",
+      "column": "order_date",
+      "data_type": "date",
+      "text": "Order date. Date of the order. Date ordered. Date placed. Purchase date. Transaction date. Sale date. When an order was placed. Orders in a period, by month, by quarter or by year. The main date a question about orders over time is scoped to."
+    },
+    {
+      "id": "column:orders.required_date",
+      "type": "column",
+      "table": "orders",
+      "column": "required_date",
+      "data_type": "date",
+      "text": "Required date. Due date. Requested delivery date. Date needed by. Promised date. Target delivery date. When an order was due to reach the customer, as distinct from the date it was actually shipped. Used to find late or overdue orders."
+    },
+    {
+      "id": "column:orders.shipped_date",
+      "type": "column",
+      "table": "orders",
+      "column": "shipped_date",
+      "data_type": "date",
+      "text": "Shipped date. Ship date. Date shipped. Dispatch date. Date sent. Delivery date. When an order actually left. Orders shipped in a period. Empty when an order has not been shipped yet, so used to find unshipped or pending orders."
+    },
+    {
+      "id": "column:orders.ship_via",
+      "type": "column",
+      "table": "orders",
+      "column": "ship_via",
+      "data_type": "smallint",
+      "text": "Ship via. Shipper on the order. Carrier. Courier. Shipping company. Delivery company used. Which shipper carried the order. Used to link an order back to the shipping company."
+    },
+    {
+      "id": "column:orders.freight",
+      "type": "column",
+      "table": "orders",
+      "column": "freight",
+      "data_type": "real",
+      "text": "Freight. Freight charge. Shipping cost. Shipping charge. Delivery cost. Carriage. Postage. The amount charged to ship the order, as distinct from the value of the goods. Total or average shipping cost."
+    },
+    {
+      "id": "column:orders.ship_name",
+      "type": "column",
+      "table": "orders",
+      "column": "ship_name",
+      "data_type": "character varying(40)",
+      "text": "Ship name. Shipping name. Name on the delivery. Consignee. Recipient name. Who the order is addressed to, as recorded on the order, as distinct from the customer's registered company name."
+    },
+    {
+      "id": "column:orders.ship_address",
+      "type": "column",
+      "table": "orders",
+      "column": "ship_address",
+      "data_type": "character varying(60)",
+      "text": "Ship address. Shipping address. Delivery address. Street address on the order. Where the order is delivered to. Street and building details of the delivery, as distinct from the customer's own address on file."
+    },
+    {
+      "id": "column:orders.ship_city",
+      "type": "column",
+      "table": "orders",
+      "column": "ship_city",
+      "data_type": "character varying(15)",
+      "text": "Ship city. Shipping city. Delivery city. Destination city. Town the order is delivered to. Orders shipped to a particular city."
+    },
+    {
+      "id": "column:orders.ship_region",
+      "type": "column",
+      "table": "orders",
+      "column": "ship_region",
+      "data_type": "character varying(15)",
+      "text": "Ship region. Shipping region. Delivery region. Destination state or province. Territory the order is delivered to. Orders shipped to a particular state or region."
+    },
+    {
+      "id": "column:orders.ship_postal_code",
+      "type": "column",
+      "table": "orders",
+      "column": "ship_postal_code",
+      "data_type": "character varying(10)",
+      "text": "Ship postal code. Shipping zip code. Delivery postcode. Destination postal code. Postal code the order is delivered to. Orders shipped to a particular zip or postal code area."
+    },
+    {
+      "id": "column:orders.ship_country",
+      "type": "column",
+      "table": "orders",
+      "column": "ship_country",
+      "data_type": "character varying(15)",
+      "text": "Ship country. Shipping country. Delivery country. Destination country. Nation the order is delivered to. Orders shipped to a country. Broadest geographic level of the delivery, above ship region and ship city."
+    }
+  ]
+}

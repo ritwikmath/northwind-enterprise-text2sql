@@ -1,0 +1,95 @@
+{
+  "documents": [
+    {
+      "id": "table:products",
+      "type": "table",
+      "name": "products",
+      "default_columns": [
+        "product_name",
+        "unit_price",
+        "units_in_stock"
+      ],
+      "text": "Products. Product information. Product records. Product list. Items. Goods. Catalogue. Merchandise. Stock items. Things that are sold. What we sell. Contains product identifier, product name, the supplier it comes from, the category it belongs to, the packaging quantity per unit, the list price, units in stock, units on order, the reorder level and whether the product is discontinued."
+    },
+    {
+      "id": "column:products.product_id",
+      "type": "column",
+      "table": "products",
+      "column": "product_id",
+      "data_type": "smallint",
+      "text": "Product ID. Product identifier. Product code. Product number. Item ID. SKU. The number that uniquely identifies a product. Used to look up a specific product or link an order line to the product sold."
+    },
+    {
+      "id": "column:products.product_name",
+      "type": "column",
+      "table": "products",
+      "column": "product_name",
+      "data_type": "character varying(40)",
+      "text": "Product name. Name of the product. Item name. Product title. Goods name. What a product is called. Products called a certain name. The readable label of the product."
+    },
+    {
+      "id": "column:products.supplier_id",
+      "type": "column",
+      "table": "products",
+      "column": "supplier_id",
+      "data_type": "smallint",
+      "text": "Supplier ID on the product. Which supplier provides the product. Vendor code. Manufacturer identifier. Who supplies the product. Used to link a product back to its supplier."
+    },
+    {
+      "id": "column:products.category_id",
+      "type": "column",
+      "table": "products",
+      "column": "category_id",
+      "data_type": "smallint",
+      "text": "Category ID on the product. Which category the product belongs to. Product type code. Product group code. Used to link a product back to its category."
+    },
+    {
+      "id": "column:products.quantity_per_unit",
+      "type": "column",
+      "table": "products",
+      "column": "quantity_per_unit",
+      "data_type": "character varying(20)",
+      "text": "Quantity per unit. Packaging. Pack size. Unit size. How the product is packaged, such as boxes, bottles or jars per unit. Description of the selling unit, as distinct from the number of units in stock."
+    },
+    {
+      "id": "column:products.unit_price",
+      "type": "column",
+      "table": "products",
+      "column": "unit_price",
+      "data_type": "real",
+      "text": "Product unit price. List price. Catalogue price. Standard price. Price of the product. How much a product costs. Cheapest or most expensive products. The current price held against the product, as distinct from the price actually charged on an order line."
+    },
+    {
+      "id": "column:products.units_in_stock",
+      "type": "column",
+      "table": "products",
+      "column": "units_in_stock",
+      "data_type": "smallint",
+      "text": "Units in stock. Stock level. Inventory. Stock on hand. Quantity available. How many are in stock. Availability. Products that are out of stock or running low. The number of units currently held, as distinct from units on order."
+    },
+    {
+      "id": "column:products.units_on_order",
+      "type": "column",
+      "table": "products",
+      "column": "units_on_order",
+      "data_type": "smallint",
+      "text": "Units on order. Quantity on order. Stock on order. Incoming stock. Units awaiting delivery from the supplier. Replenishment in progress, as distinct from units already in stock."
+    },
+    {
+      "id": "column:products.reorder_level",
+      "type": "column",
+      "table": "products",
+      "column": "reorder_level",
+      "data_type": "smallint",
+      "text": "Reorder level. Reorder point. Minimum stock level. Restock threshold. Safety stock. The stock level at which a product should be reordered. Used with units in stock to find products that need restocking."
+    },
+    {
+      "id": "column:products.discontinued",
+      "type": "column",
+      "table": "products",
+      "column": "discontinued",
+      "data_type": "integer",
+      "text": "Discontinued. Discontinued flag. Whether a product is discontinued. No longer sold. Withdrawn. Inactive product. Active or available products. Flag that is set when the product is no longer offered."
+    }
+  ]
+}

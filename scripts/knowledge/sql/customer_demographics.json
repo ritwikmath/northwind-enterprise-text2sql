@@ -1,0 +1,30 @@
+{
+  "documents": [
+    {
+      "id": "table:customer_demographics",
+      "type": "table",
+      "name": "customer_demographics",
+      "default_columns": [
+        "customer_type_id",
+        "customer_desc"
+      ],
+      "text": "Customer demographics. Customer types. Customer segments. Customer categories. Customer classification. Segmentation of customers. Kinds of customers. Customer groups and the description of each group. Contains the customer type identifier and a description of that customer type."
+    },
+    {
+      "id": "column:customer_demographics.customer_type_id",
+      "type": "column",
+      "table": "customer_demographics",
+      "column": "customer_type_id",
+      "data_type": "character varying(5)",
+      "text": "Customer type ID. Customer type code. Customer segment ID. Customer category code. Customer group identifier. The short code that uniquely identifies a customer type or segment. Used to link a customer to the segment they belong to."
+    },
+    {
+      "id": "column:customer_demographics.customer_desc",
+      "type": "column",
+      "table": "customer_demographics",
+      "column": "customer_desc",
+      "data_type": "text",
+      "text": "Customer type description. Customer segment description. Description of the customer group. What the customer type means. Free text describing the customer segment or demographic category."
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "documents": [
+    {
+      "id": "table:customer_customer_demo",
+      "type": "table",
+      "name": "customer_customer_demo",
+      "default_columns": [
+        "customer_id",
+        "customer_type_id"
+      ],
+      "text": "Customer customer demographics. Link between customers and customer types. Which segment a customer belongs to. Customer segment assignment. Customer type membership. Customer classification mapping. Join table pairing each customer with each customer demographic type they fall under. Contains the customer identifier and the customer type identifier."
+    },
+    {
+      "id": "column:customer_customer_demo.customer_id",
+      "type": "column",
+      "table": "customer_customer_demo",
+      "column": "customer_id",
+      "data_type": "character varying(5)",
+      "text": "Customer ID on the customer segment link. Customer identifier. Customer code. Which customer a segment assignment belongs to. Used to link a customer segment record back to the customer."
+    },
+    {
+      "id": "column:customer_customer_demo.customer_type_id",
+      "type": "column",
+      "table": "customer_customer_demo",
+      "column": "customer_type_id",
+      "data_type": "character varying(5)",
+      "text": "Customer type ID on the customer segment link. Customer segment code. Customer category code. Which segment or demographic type the customer is assigned to. Used to link the assignment back to the customer demographics."
+    }
+  ]
+}

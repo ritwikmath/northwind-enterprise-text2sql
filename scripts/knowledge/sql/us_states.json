@@ -1,0 +1,47 @@
+{
+  "documents": [
+    {
+      "id": "table:us_states",
+      "type": "table",
+      "name": "us_states",
+      "default_columns": [
+        "state_name",
+        "state_abbr",
+        "state_region"
+      ],
+      "text": "US states. United States states. American states. State list. State reference data. State lookup. Contains the state identifier, the full state name, the two letter state abbreviation and the part of the country the state sits in, such as north, south, east or west."
+    },
+    {
+      "id": "column:us_states.state_id",
+      "type": "column",
+      "table": "us_states",
+      "column": "state_id",
+      "data_type": "smallint",
+      "text": "State ID. State identifier. State code number. The number that uniquely identifies a US state record."
+    },
+    {
+      "id": "column:us_states.state_name",
+      "type": "column",
+      "table": "us_states",
+      "column": "state_name",
+      "data_type": "character varying(100)",
+      "text": "State name. Name of the state. Full state name. US state. Which state, written out in full such as Alabama or California, as distinct from the two letter abbreviation."
+    },
+    {
+      "id": "column:us_states.state_abbr",
+      "type": "column",
+      "table": "us_states",
+      "column": "state_abbr",
+      "data_type": "character varying(2)",
+      "text": "State abbreviation. State abbr. State code. Two letter state code. Short state name such as AL or CA, as distinct from the full state name."
+    },
+    {
+      "id": "column:us_states.state_region",
+      "type": "column",
+      "table": "us_states",
+      "column": "state_region",
+      "data_type": "character varying(50)",
+      "text": "State region. Part of the country. Area of the United States the state belongs to, such as north, south, east, west or midwest. Broader grouping of US states."
+    }
+  ]
+}

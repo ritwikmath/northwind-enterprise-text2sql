@@ -9,6 +9,7 @@ from pinecone import Pinecone, ServerlessSpec
 load_dotenv()
 
 API_KEY=os.getenv("PINECONE_API_KEY")
+SQL_SCHEMA_INDEX_NAME=os.getenv("SQL_SCHEMA_INDEX_NAME", "texttosqlschemaindex")
 
 if not API_KEY:
     raise RuntimeError("The PineCone API Key is not set")
@@ -17,9 +18,9 @@ embedding_client = OpenAIEmbeddings(model="text-embedding-3-large", dimensions=1
 
 pc = Pinecone(api_key=API_KEY)
 
-if not pc.has_index("texttosqlschemaindex"):
+if not pc.has_index(SQL_SCHEMA_INDEX_NAME):
     pc.create_index(
-        name="texttosqlschemaindex",
+        name=SQL_SCHEMA_INDEX_NAME,
         dimension=1024,
         vector_type="dense",
         metric="dotproduct",
@@ -29,9 +30,9 @@ if not pc.has_index("texttosqlschemaindex"):
         )
     )
 
-index = pc.Index("texttosqlschemaindex")
+index = pc.Index(SQL_SCHEMA_INDEX_NAME)
 
-knowledge_directory = Path("./knowledge")
+knowledge_directory = Path("./knowledge/sql")
 
 def get_sparse_embedding(chunk: str) -> list[int]:
     embedding = pc.inference.embed(

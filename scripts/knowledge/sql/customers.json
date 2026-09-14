@@ -16,6 +16,7 @@
       "type": "column",
       "table": "customers",
       "column": "customer_id",
+      "data_type": "character varying(5)",
       "text": "Customer ID. Customer identifier. Customer code. Customer number. Client ID. Account code. The short code that uniquely identifies a customer. Used to look up or refer to a specific customer."
     },
     {
@@ -23,6 +24,7 @@
       "type": "column",
       "table": "customers",
       "column": "company_name",
+      "data_type": "character varying(40)",
       "text": "Company name. Customer name. Client name. Business name. Organization name. Name of the company. The name the customer trades under. Customers called a certain name. Which company a customer is."
     },
     {
@@ -30,6 +32,7 @@
       "type": "column",
       "table": "customers",
       "column": "contact_name",
+      "data_type": "character varying(30)",
       "text": "Contact name. Contact person. Person to contact. Customer contact. Point of contact. Name of the individual person at the customer company. Who to speak to at the customer. Contact's full name, as distinct from the company name."
     },
     {
@@ -37,6 +40,7 @@
       "type": "column",
       "table": "customers",
       "column": "contact_title",
+      "data_type": "character varying(30)",
       "text": "Contact title. Job title. Position. Role. Designation. Job role of the contact person at the customer. What the contact person does. Titles such as the contact's business position within their company."
     },
     {
@@ -44,6 +48,7 @@
       "type": "column",
       "table": "customers",
       "column": "address",
+      "data_type": "character varying(60)",
       "text": "Address. Street address. Customer address. Mailing address. Postal address. Where the customer is located. Street and building details of the customer, as distinct from city, region or country."
     },
     {
@@ -51,6 +56,7 @@
       "type": "column",
       "table": "customers",
       "column": "city",
+      "data_type": "character varying(15)",
       "text": "City. Customer city. Town. Customer location. City where the customer is located. Customers from a city. Customers based in a particular city. Which city a customer is in."
     },
     {
@@ -58,6 +64,7 @@
       "type": "column",
       "table": "customers",
       "column": "region",
+      "data_type": "character varying(15)",
       "text": "Region. State. Province. County. Territory. Area. Customer region. Regional location of the customer, broader than city but within a country. Customers in a particular state or province."
     },
     {
@@ -65,6 +72,7 @@
       "type": "column",
       "table": "customers",
       "column": "postal_code",
+      "data_type": "character varying(10)",
       "text": "Postal code. Zip code. Postcode. PIN code. Customer postal code. Postal code of the customer address. Customers in a particular zip or postal code area."
     },
     {
@@ -72,6 +80,7 @@
       "type": "column",
       "table": "customers",
       "column": "country",
+      "data_type": "character varying(15)",
       "text": "Country. Customer country. Nation. Customer location by country. Country where the customer is based. Customers from a country. Which country a customer is in. Broadest geographic level for a customer, above region and city."
     },
     {
@@ -79,6 +88,7 @@
       "type": "column",
       "table": "customers",
       "column": "phone",
+      "data_type": "character varying(24)",
       "text": "Phone. Phone number. Telephone. Telephone number. Contact number. Mobile number. Customer phone number. How to call the customer. Phone details of the customer, as distinct from the fax number."
     },
     {
@@ -86,6 +96,7 @@
       "type": "column",
       "table": "customers",
       "column": "fax",
+      "data_type": "character varying(24)",
       "text": "Fax. Fax number. Facsimile number. Customer fax number. Fax contact details of the customer, as distinct from the phone number."
     }
   ]

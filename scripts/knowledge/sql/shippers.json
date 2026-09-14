@@ -1,0 +1,38 @@
+{
+  "documents": [
+    {
+      "id": "table:shippers",
+      "type": "table",
+      "name": "shippers",
+      "default_columns": [
+        "company_name",
+        "phone"
+      ],
+      "text": "Shippers. Shipping companies. Carriers. Couriers. Delivery companies. Freight companies. Logistics providers. Transport companies. Who delivers our orders. Contains the shipper identifier, the shipping company name and its phone number."
+    },
+    {
+      "id": "column:shippers.shipper_id",
+      "type": "column",
+      "table": "shippers",
+      "column": "shipper_id",
+      "data_type": "smallint",
+      "text": "Shipper ID. Shipper identifier. Carrier code. Courier ID. Shipping company number. The number that uniquely identifies a shipping company. Used to link an order to the shipper that carried it."
+    },
+    {
+      "id": "column:shippers.company_name",
+      "type": "column",
+      "table": "shippers",
+      "column": "company_name",
+      "data_type": "character varying(40)",
+      "text": "Shipper company name. Shipper name. Carrier name. Courier name. Delivery company name. Name of the shipping company. Which carrier delivered an order."
+    },
+    {
+      "id": "column:shippers.phone",
+      "type": "column",
+      "table": "shippers",
+      "column": "phone",
+      "data_type": "character varying(24)",
+      "text": "Shipper phone. Phone number. Telephone number. Contact number of the shipping company. How to call the carrier."
+    }
+  ]
+}

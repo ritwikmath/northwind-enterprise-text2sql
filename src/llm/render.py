@@ -158,7 +158,8 @@ def render_schema(documents: list[dict]) -> str:
         if not columns.get(table):
             lines.append("\tNo columns of this table were retrieved. You cannot use it.")
         for doc in columns.get(table, []):
-            lines.append(f"\tColumn: {table}.{doc['column']}")
+            data_type = f" ({doc['data_type']})" if doc.get("data_type") else ""
+            lines.append(f"\tColumn: {table}.{doc['column']}{data_type}")
             if doc.get("text"):
                 lines.append(f"\t\t{doc['text']}")
         lines.append("")

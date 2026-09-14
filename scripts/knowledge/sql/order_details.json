@@ -1,0 +1,56 @@
+{
+  "documents": [
+    {
+      "id": "table:order_details",
+      "type": "table",
+      "name": "order_details",
+      "default_columns": [
+        "order_id",
+        "product_id",
+        "quantity",
+        "unit_price"
+      ],
+      "text": "Order details. Order lines. Line items. Order items. Items on an order. Products on an order. Order contents. What was bought. Sales line items. One row per product on an order, carrying the price charged, how many were bought and the discount given. This is where sales revenue and quantity sold are held: revenue on a line is unit price times quantity less the discount."
+    },
+    {
+      "id": "column:order_details.order_id",
+      "type": "column",
+      "table": "order_details",
+      "column": "order_id",
+      "data_type": "smallint",
+      "text": "Order ID on the order line. Which order a line item belongs to. Order number on the line item. Used to link an order line back to its order."
+    },
+    {
+      "id": "column:order_details.product_id",
+      "type": "column",
+      "table": "order_details",
+      "column": "product_id",
+      "data_type": "smallint",
+      "text": "Product ID on the order line. Which product was bought. Item ordered. Product code on the line item. Used to link an order line back to the product that was sold."
+    },
+    {
+      "id": "column:order_details.unit_price",
+      "type": "column",
+      "table": "order_details",
+      "column": "unit_price",
+      "data_type": "real",
+      "text": "Unit price on the order line. Price charged. Selling price. Price per unit. Price paid. Sale price. Item price on the order. The price actually charged for one unit when the order was placed, as distinct from the product's current list price. Used with quantity and discount to work out revenue, sales value or total amount."
+    },
+    {
+      "id": "column:order_details.quantity",
+      "type": "column",
+      "table": "order_details",
+      "column": "quantity",
+      "data_type": "smallint",
+      "text": "Quantity. Quantity ordered. Units sold. Number of units. How many were bought. Amount ordered. Volume sold. Count of items on the order line. Used to total units sold or work out revenue together with unit price."
+    },
+    {
+      "id": "column:order_details.discount",
+      "type": "column",
+      "table": "order_details",
+      "column": "discount",
+      "data_type": "real",
+      "text": "Discount. Discount rate. Discount percentage. Price reduction. Markdown. Rebate. The fraction taken off the unit price on an order line. Zero when no discount was given. Used to find discounted sales and to work out net revenue."
+    }
+  ]
+}

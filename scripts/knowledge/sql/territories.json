@@ -1,0 +1,38 @@
+{
+  "documents": [
+    {
+      "id": "table:territories",
+      "type": "table",
+      "name": "territories",
+      "default_columns": [
+        "territory_description",
+        "region_id"
+      ],
+      "text": "Territories. Sales territories. Territory list. Sales areas. Patches. Coverage areas. Districts. The local areas that sales staff cover, each belonging to a wider region. Contains the territory identifier, the territory description and the region it rolls up into."
+    },
+    {
+      "id": "column:territories.territory_id",
+      "type": "column",
+      "table": "territories",
+      "column": "territory_id",
+      "data_type": "character varying(20)",
+      "text": "Territory ID. Territory identifier. Territory code. Territory number. The code that uniquely identifies a sales territory. Used to link an employee to the territories they cover."
+    },
+    {
+      "id": "column:territories.territory_description",
+      "type": "column",
+      "table": "territories",
+      "column": "territory_description",
+      "data_type": "character varying(60)",
+      "text": "Territory description. Territory name. Name of the territory. Sales area name. District name. What a sales territory is called, usually the town or locality it covers. The readable label of the territory."
+    },
+    {
+      "id": "column:territories.region_id",
+      "type": "column",
+      "table": "territories",
+      "column": "region_id",
+      "data_type": "smallint",
+      "text": "Region ID on the territory. Which region a territory belongs to. Region code. Zone the territory rolls up into. Used to link a territory back to its region."
+    }
+  ]
+}

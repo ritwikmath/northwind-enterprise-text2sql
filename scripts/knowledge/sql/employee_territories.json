@@ -1,0 +1,30 @@
+{
+  "documents": [
+    {
+      "id": "table:employee_territories",
+      "type": "table",
+      "name": "employee_territories",
+      "default_columns": [
+        "employee_id",
+        "territory_id"
+      ],
+      "text": "Employee territories. Territory assignments. Which territories an employee covers. Sales area assignment. Staff coverage. Who covers which area. Join table pairing each employee with each sales territory they are responsible for. Contains the employee identifier and the territory identifier."
+    },
+    {
+      "id": "column:employee_territories.employee_id",
+      "type": "column",
+      "table": "employee_territories",
+      "column": "employee_id",
+      "data_type": "smallint",
+      "text": "Employee ID on the territory assignment. Which employee covers a territory. Staff member assigned. Used to link a territory assignment back to the employee."
+    },
+    {
+      "id": "column:employee_territories.territory_id",
+      "type": "column",
+      "table": "employee_territories",
+      "column": "territory_id",
+      "data_type": "character varying(20)",
+      "text": "Territory ID on the assignment. Which territory the employee is assigned to. Sales area covered. Used to link the assignment back to the territory."
+    }
+  ]
+}

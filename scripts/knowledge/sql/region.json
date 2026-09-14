@@ -1,0 +1,29 @@
+{
+  "documents": [
+    {
+      "id": "table:region",
+      "type": "table",
+      "name": "region",
+      "default_columns": [
+        "region_description"
+      ],
+      "text": "Region. Sales regions. Regional divisions. Zones. Areas. Broad geographic divisions used for sales, such as eastern, western, northern and southern. The grouping that territories roll up into. Contains the region identifier and the region description."
+    },
+    {
+      "id": "column:region.region_id",
+      "type": "column",
+      "table": "region",
+      "column": "region_id",
+      "data_type": "smallint",
+      "text": "Region ID. Region identifier. Region code. Region number. Zone code. The number that uniquely identifies a sales region. Used to link a territory to the region it belongs to."
+    },
+    {
+      "id": "column:region.region_description",
+      "type": "column",
+      "table": "region",
+      "column": "region_description",
+      "data_type": "character varying(60)",
+      "text": "Region description. Region name. Name of the region. Zone name. Area name. What a sales region is called, such as eastern, western, northern or southern. The readable label of the region."
+    }
+  ]
+}

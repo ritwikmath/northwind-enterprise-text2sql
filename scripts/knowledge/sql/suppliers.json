@@ -1,0 +1,111 @@
+{
+  "documents": [
+    {
+      "id": "table:suppliers",
+      "type": "table",
+      "name": "suppliers",
+      "default_columns": [
+        "company_name",
+        "contact_name",
+        "country"
+      ],
+      "text": "Suppliers. Supplier information. Supplier records. Supplier list. Vendors. Vendor list. Providers. Manufacturers. Producers. Companies we buy products from. Who supplies our products. Contains supplier identifier, company name, contact person name and job title, street address, city, region, postal code, country, phone number, fax number and homepage."
+    },
+    {
+      "id": "column:suppliers.supplier_id",
+      "type": "column",
+      "table": "suppliers",
+      "column": "supplier_id",
+      "data_type": "smallint",
+      "text": "Supplier ID. Supplier identifier. Supplier code. Supplier number. Vendor ID. The number that uniquely identifies a supplier. Used to look up a specific supplier or link a product to the supplier that provides it."
+    },
+    {
+      "id": "column:suppliers.company_name",
+      "type": "column",
+      "table": "suppliers",
+      "column": "company_name",
+      "data_type": "character varying(40)",
+      "text": "Supplier company name. Supplier name. Vendor name. Business name. Manufacturer name. Name of the supplying company. Which company supplies a product. The name the supplier trades under."
+    },
+    {
+      "id": "column:suppliers.contact_name",
+      "type": "column",
+      "table": "suppliers",
+      "column": "contact_name",
+      "data_type": "character varying(30)",
+      "text": "Supplier contact name. Contact person at the supplier. Point of contact. Who to speak to at the supplier. Name of the individual person at the supplying company, as distinct from the company name."
+    },
+    {
+      "id": "column:suppliers.contact_title",
+      "type": "column",
+      "table": "suppliers",
+      "column": "contact_title",
+      "data_type": "character varying(30)",
+      "text": "Supplier contact title. Job title. Position. Role. Designation. Job role of the contact person at the supplier, such as purchasing manager or sales agent."
+    },
+    {
+      "id": "column:suppliers.address",
+      "type": "column",
+      "table": "suppliers",
+      "column": "address",
+      "data_type": "character varying(60)",
+      "text": "Supplier address. Street address. Mailing address. Where the supplier is located. Street and building details of the supplier, as distinct from city, region or country."
+    },
+    {
+      "id": "column:suppliers.city",
+      "type": "column",
+      "table": "suppliers",
+      "column": "city",
+      "data_type": "character varying(15)",
+      "text": "Supplier city. City. Town. City where the supplier is located. Suppliers from a city. Which city a supplier is in."
+    },
+    {
+      "id": "column:suppliers.region",
+      "type": "column",
+      "table": "suppliers",
+      "column": "region",
+      "data_type": "character varying(15)",
+      "text": "Supplier region. Region. State. Province. County. Regional location of the supplier, broader than city but within a country. Suppliers in a particular state or province."
+    },
+    {
+      "id": "column:suppliers.postal_code",
+      "type": "column",
+      "table": "suppliers",
+      "column": "postal_code",
+      "data_type": "character varying(10)",
+      "text": "Supplier postal code. Zip code. Postcode. PIN code. Postal code of the supplier address. Suppliers in a particular zip or postal code area."
+    },
+    {
+      "id": "column:suppliers.country",
+      "type": "column",
+      "table": "suppliers",
+      "column": "country",
+      "data_type": "character varying(15)",
+      "text": "Supplier country. Country. Nation. Country where the supplier is based. Suppliers from a country. Broadest geographic level for a supplier, above region and city."
+    },
+    {
+      "id": "column:suppliers.phone",
+      "type": "column",
+      "table": "suppliers",
+      "column": "phone",
+      "data_type": "character varying(24)",
+      "text": "Supplier phone. Phone number. Telephone number. Contact number. How to call the supplier. Phone details of the supplier, as distinct from the fax number."
+    },
+    {
+      "id": "column:suppliers.fax",
+      "type": "column",
+      "table": "suppliers",
+      "column": "fax",
+      "data_type": "character varying(24)",
+      "text": "Supplier fax. Fax number. Facsimile number. Fax contact details of the supplier, as distinct from the phone number."
+    },
+    {
+      "id": "column:suppliers.homepage",
+      "type": "column",
+      "table": "suppliers",
+      "column": "homepage",
+      "data_type": "text",
+      "text": "Supplier homepage. Website. Web page. Web address. URL. Site. Online presence of the supplier."
+    }
+  ]
+}
